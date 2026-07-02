@@ -1,5 +1,6 @@
 
 import Activities from '@/components/home/Activities'
+import Contact from '@/components/home/Contact'
 import Destinations from '@/components/home/Destinations'
 import Hero from '@/components/home/Hero'
 import WhyChooseUs from '@/components/home/WhyChooseUs'
@@ -12,6 +13,7 @@ const page = () => {
       <WhyChooseUs />
       <Destinations />
       <Activities />
+      <Contact />
     </main>
   )
 }

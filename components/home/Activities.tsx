@@ -130,7 +130,7 @@ const Activities = () => {
   }
 
   return (
-    <section className="py-12 lg:py-18 bg-white">
+    <section id='activities' className="py-12 lg:py-18 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Title */}
         <SectionTitle

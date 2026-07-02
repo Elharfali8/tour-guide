@@ -50,7 +50,7 @@ const WhyChooseUs = () => {
   ]
 
   return (
-    <section className="py-12 lg:py-18" style={{ backgroundColor: '#FCFBF8' }}>
+    <section id='why-choose-us' className="py-12 lg:py-18" style={{ backgroundColor: '#FCFBF8' }}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Label */}
         <div className="text-center mb-10 sm:mb-14">

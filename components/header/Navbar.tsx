@@ -8,13 +8,22 @@ interface NavbarProps {
 }
 
 const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
+  const navLinks = [
+    { name: 'Home', href: '/' },
+    { name: 'Why Choose Us', href: '/#why-choose-us' },
+    { name: 'Activities', href: '/#activities' },
+    { name: 'About', href: '/#about' },
+    { name: 'Destinations', href: '/#destinations' },
+    { name: 'Contact', href: '/#contact' },
+  ]
+
   return (
     <div className="flex items-center justify-between h-16 md:h-20">
       {/* Logo */}
       <div className="flex-shrink-0">
         <Link href="/" className="flex items-center gap-2">
           <span className={`text-2xl font-bold transition-colors duration-300 ${
-            scrolled ? "text-gray-900" : "text-white drop-shadow-md"
+            scrolled ? "text-gray-900" : "text-white! drop-shadow-md"
           }`}>
             LOGO
           </span>
@@ -23,38 +32,17 @@ const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
 
       {/* Desktop Navigation */}
       <nav className="hidden md:flex items-center space-x-8">
-        <Link
-          href="/"
-          className={`font-medium transition-colors duration-300 ${
-            scrolled ? "text-gray-700 hover:text-gray-900" : "text-white hover:text-gray-200"
-          }`}
-        >
-          Home
-        </Link>
-        <Link
-          href="/about"
-          className={`font-medium transition-colors duration-300 ${
-            scrolled ? "text-gray-700 hover:text-gray-900" : "text-white hover:text-gray-200"
-          }`}
-        >
-          About
-        </Link>
-        <Link
-          href="/services"
-          className={`font-medium transition-colors duration-300 ${
-            scrolled ? "text-gray-700 hover:text-gray-900" : "text-white hover:text-gray-200"
-          }`}
-        >
-          Services
-        </Link>
-        <Link
-          href="/contact"
-          className={`font-medium transition-colors duration-300 ${
-            scrolled ? "text-gray-700 hover:text-gray-900" : "text-white hover:text-gray-200"
-          }`}
-        >
-          Contact
-        </Link>
+        {navLinks.map((link) => (
+          <Link
+            key={link.name}
+            href={link.href}
+            className={`font-medium transition-colors duration-300 ${
+              scrolled ? "text-gray-700 hover:text-gray-900" : "text-white! hover:text-gray-300!"
+            }`}
+          >
+            {link.name}
+          </Link>
+        ))}
       </nav>
 
       {/* Mobile Menu Button */}
