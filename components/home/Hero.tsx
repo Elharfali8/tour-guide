@@ -56,7 +56,7 @@ const Hero = () => {
           <div className="mt-6 sm:mt-8 grid md:grid-cols-2 gap-4 w-full">
             <Link
               href="/tours"
-              className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-[#E8872F] px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white shadow-lg shadow-[#E8872F]/30 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#D8781F] hover:shadow-2xl hover:shadow-[#E8872F]/40 active:scale-95 w-full sm:w-auto"
+              className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-[#E8872F] px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white! shadow-lg shadow-[#E8872F]/30 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#D8781F] hover:shadow-2xl hover:shadow-[#E8872F]/40 active:scale-95 w-full sm:w-auto"
             >
               <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
               <span className="relative flex items-center justify-center gap-2">
