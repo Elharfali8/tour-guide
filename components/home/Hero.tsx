@@ -78,7 +78,7 @@ const Hero = () => {
             </Link>
 
             <Link
-              href="/contact"
+              href="/#contact"
               className="group inline-flex items-center justify-center rounded-xl border border-white/30 bg-white/15 px-4 py-3 sm:px-6 sm:py-4 text-sm sm:text-base font-semibold text-white! backdrop-blur-md transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-white/60 hover:bg-white hover:text-[#E8872F]! active:scale-95 w-full sm:w-auto"
             >
               <span className="flex items-center justify-center gap-2">

@@ -248,21 +248,7 @@ const Activities = () => {
           </div>
         )}
 
-        {/* View All Button */}
-        <div className="mt-10 sm:mt-12 text-center">
-          <Link
-            href="/activities"
-            className="group relative inline-flex items-center justify-center overflow-hidden rounded-xl bg-[#E8872F] px-8 py-3 sm:px-10 sm:py-4 text-sm sm:text-base font-semibold text-white! shadow-lg shadow-[#E8872F]/30 transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#D8781F] hover:shadow-2xl hover:shadow-[#E8872F]/40 active:scale-95"
-          >
-            <span className="absolute inset-0 -translate-x-full bg-gradient-to-r from-transparent via-white/30 to-transparent transition-transform duration-700 group-hover:translate-x-full" />
-            <span className="relative flex items-center gap-2">
-              View All Activities
-              <svg className="w-4 h-4 sm:w-5 sm:h-5 transition-transform duration-300 group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 12h14m-6-6 6 6-6 6" />
-              </svg>
-            </span>
-          </Link>
-        </div>
+        
       </div>
     </section>
   )

@@ -12,7 +12,7 @@ const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
     { name: 'Home', href: '/' },
     { name: 'Why Choose Us', href: '/#why-choose-us' },
     { name: 'Activities', href: '/#activities' },
-    { name: 'About', href: '/#about' },
+    // { name: 'About', href: '/#about' },
     { name: 'Destinations', href: '/#destinations' },
     { name: 'Contact', href: '/#contact' },
   ]

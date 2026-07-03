@@ -104,7 +104,7 @@ const WhyChooseUs = () => {
               </Link>
 
               <Link
-                href="/contact"
+                href="/#contact"
                 className="group inline-flex items-center justify-center rounded-xl border-2 border-[#E8872F] bg-white px-8 py-4 text-sm sm:text-base font-semibold text-[#E8872F] transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:bg-[#E8872F] hover:text-white hover:shadow-lg hover:shadow-[#E8872F]/20 active:scale-95"
               >
                 Contact Us
