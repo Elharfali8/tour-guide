@@ -37,8 +37,17 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
   }, [isOpen])
 
   const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
     onClose()
+
+    if (!href.startsWith('/#')) {
+      return
+    }
+
+    if (window.location.pathname !== '/') {
+      return
+    }
+
+    e.preventDefault()
     
     // Get the section ID from the href
     const sectionId = href.replace('/', '')

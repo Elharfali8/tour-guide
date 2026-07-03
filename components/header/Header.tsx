@@ -2,12 +2,16 @@
 'use client';
 
 import React, { useEffect, useState } from 'react'
+import { usePathname } from 'next/navigation'
 import Navbar from './Navbar'
 import Sidebar from './Sidebar'
 
 const Header = () => {
+  const pathname = usePathname()
   const [scrolled, setScrolled] = useState(false)
   const [sidebarOpen, setSidebarOpen] = useState(false)
+  const isHomePage = pathname === '/'
+  const solidHeader = !isHomePage || scrolled
 
   // Handle scroll effect
   useEffect(() => {
@@ -33,11 +37,11 @@ const Header = () => {
     <>
       <header
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-md" : "bg-transparent"
+          solidHeader ? "bg-white shadow-md" : "bg-transparent"
         }`}
       >
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Navbar scrolled={scrolled} onMenuClick={toggleSidebar} />
+          <Navbar scrolled={solidHeader} onMenuClick={toggleSidebar} />
         </div>
       </header>
 
