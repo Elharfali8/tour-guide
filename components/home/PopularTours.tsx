@@ -187,8 +187,8 @@ const PopularTours = ({
                   }}
                 >
                   <TourCard
-                    title={tour.title}
-                    description={tour.description}
+                    title={tour.cardTitle}
+                    description={tour.title}
                     image={tour.image}
                     href={localePath(locale, `/tours/${tour.slug}`)}
                     ctaLabel={t.cardCta}

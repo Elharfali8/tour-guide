@@ -34,7 +34,7 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
       </div>
 
       {/* Desktop Navigation */}
-      <nav className="hidden md:flex items-center space-x-8">
+      <nav className="hidden lg:flex items-center space-x-8">
         {navLinks.map((link) => (
           <Link
             key={link.name}
@@ -74,7 +74,7 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
       {/* Mobile Menu Button */}
       <button
         onClick={onMenuClick}
-        className="md:hidden flex items-center justify-center p-2 rounded-md transition-colors duration-300 hover:bg-white/20 focus:outline-none"
+        className="lg:hidden flex items-center justify-center p-2 rounded-md transition-colors duration-300 hover:bg-white/20 focus:outline-none"
         aria-label="Open menu"
       >
         <svg

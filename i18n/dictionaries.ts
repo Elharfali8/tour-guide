@@ -127,6 +127,7 @@ export const dictionaries = {
     tours: [
       {
         slug: 'marrakech-city-tour',
+        cardTitle: 'Marrakech',
         title: 'Marrakech',
         description:
           'Discover Marrakech differently on a guided half-day tour with your professional guide.',
@@ -189,6 +190,7 @@ export const dictionaries = {
       },
       {
         slug: 'ourika-valley-day-trip',
+        cardTitle: 'Ourika Valley',
         title: 'Full Day Trip to the Ourika Valley From Marrakech',
         description:
           'Set off for a full day of exploration in the magnificent Ourika Valley, located in the heart of the High Atlas Mountains.',
@@ -255,6 +257,7 @@ export const dictionaries = {
       },
       {
         slug: 'agafay-desert-day-trip',
+        cardTitle: 'Agafay Desert',
         title: 'Agafay Desert Quad Adventure',
         description:
           'Take a break from the bustle of Marrakech and discover the magnificent Agafay Desert.',
@@ -321,6 +324,7 @@ export const dictionaries = {
       },
       {
         slug: 'imlil-valley-day-trip',
+        cardTitle: 'Imlil Valley',
         title: 'Day Trip from Marrakech to the Imlil Valley',
         description:
           'Set off for an adventure in the High Atlas Mountains and discover the Imlil Valley.',
@@ -388,6 +392,7 @@ export const dictionaries = {
       },
       {
         slug: 'ouarzazate-ait-ben-haddou',
+        cardTitle: 'Ouarzazate and Ait Ben Haddou',
         title: 'Day Trip from Marrakech to Ouarzazate and Ait Ben Haddou',
         description:
           'Journey through the High Atlas Mountains to discover the UNESCO-listed Ait Ben Haddou, the cinematic city of Ouarzazate, and breathtaking Moroccan landscapes.',
@@ -395,6 +400,7 @@ export const dictionaries = {
       },
       {
         slug: 'marrakech-palmeraie-camel-ride',
+        cardTitle: 'Marrakech Camel Ride',
         title: 'Marrakech Camel Riding Experience',
         description:
           "Enjoy a peaceful camel ride through Marrakech's Palm Grove, visit Berber villages, wear traditional Tuareg clothing, and share Moroccan mint tea.",
@@ -661,6 +667,7 @@ export const dictionaries = {
     tours: [
       {
         slug: 'marrakech-city-tour',
+        cardTitle: 'Marrakech',
         title: 'Marrakech',
         description:
           'Decouvrez Marrakech autrement lors d une visite guidee de demi-journee, accompagnes par votre guide professionnel.',
@@ -724,6 +731,7 @@ export const dictionaries = {
       },
       {
         slug: 'ourika-valley-day-trip',
+        cardTitle: 'Vallee de l Ourika',
         title: 'Excursion Journee Complete a la Vallee de l Ourika Depuis Marrakech',
         description:
           'Partez pour une journee complete d exploration dans la magnifique vallee de l Ourika, situee au coeur des montagnes du Haut Atlas.',
@@ -791,6 +799,7 @@ export const dictionaries = {
       },
       {
         slug: 'agafay-desert-day-trip',
+        cardTitle: 'Desert d Agafay',
         title: 'Aventure en quad dans le desert d Agafay',
         description:
           'Offrez-vous une pause loin de l agitation de Marrakech et partez a la decouverte du magnifique desert d Agafay.',
@@ -857,6 +866,7 @@ export const dictionaries = {
       },
       {
         slug: 'imlil-valley-day-trip',
+        cardTitle: 'Vallee d Imlil',
         title: 'Excursion de Marrakech vers la vallee d Imlil',
         description:
           'Partez pour une magnifique aventure au coeur des montagnes du Haut Atlas et decouvrez la Vallee d Imlil.',
@@ -924,6 +934,7 @@ export const dictionaries = {
       },
       {
         slug: 'ouarzazate-ait-ben-haddou',
+        cardTitle: 'Ouarzazate et Ait Ben Haddou',
         title: 'Excursion vers Ouarzazate et Ait Ben Haddou',
         description:
           'Traversez le Haut Atlas pour decouvrir Ait Ben Haddou, Ouarzazate et des paysages marocains spectaculaires.',
@@ -931,6 +942,7 @@ export const dictionaries = {
       },
       {
         slug: 'marrakech-palmeraie-camel-ride',
+        cardTitle: 'Balade a dos de chameau a Marrakech',
         title: 'Balade a dos de chameau a Marrakech',
         description:
           'Profitez d une balade paisible a dos de chameau dans la Palmeraie de Marrakech avec villages berberes, tenue traditionnelle et the a la menthe.',
