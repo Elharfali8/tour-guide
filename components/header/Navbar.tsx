@@ -23,7 +23,7 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
     <div className="flex items-center justify-between h-16 md:h-20">
       {/* Logo */}
       <div className="flex-shrink-0">
-        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-20 h-20">
+        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-16 lg:w-[70px] h-16 lg:h-[70px]">
             <Image
               src='/images/logo-no-bg.png'
               alt='TFM Tours'

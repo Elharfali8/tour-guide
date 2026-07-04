@@ -96,9 +96,9 @@ const Contact = ({
     >
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D8B35B]/60 to-transparent" />
 
-      <div className="relative mx-auto max-w-7xl px-4">
-        <div className="grid items-center gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:gap-14">
-          <div>
+      <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        <div className="grid min-w-0 items-start gap-10 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-14">
+          <div className="min-w-0">
             <span className="inline-flex items-center rounded-full border border-[#D8B35B]/40 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur">
               {t.badge}
             </span>
@@ -123,11 +123,11 @@ const Contact = ({
                     <div className="flex h-12 w-12 flex-none items-center justify-center rounded-full bg-gradient-to-br from-orange-600 to-orange-300 text-white shadow-lg shadow-emerald-950/10">
                       <Icon className="h-5 w-5" strokeWidth={1.8} />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-slate-400">
                         {info.label}
                       </p>
-                      <p className="mt-1 text-sm font-semibold text-slate-950">
+                      <p className="mt-1 break-words text-sm font-semibold text-slate-950">
                         {info.value}
                       </p>
                     </div>
@@ -160,7 +160,7 @@ const Contact = ({
             </div>
           </div>
 
-          <div className=" rounded-[28px] border border-white/80 bg-white/80 p-5 shadow-[0_24px_70px_rgba(15,23,42,0.12)] backdrop-blur sm:p-8 lg:p-10">
+          <div className="min-w-0 rounded-[24px] border border-white/80 bg-white/80 p-4 shadow-[0_24px_70px_rgba(15,23,42,0.12)] backdrop-blur sm:rounded-[28px] sm:p-8 lg:p-10">
             <h3 className="font-serif text-2xl font-semibold text-slate-950">
               {t.formTitle}
             </h3>
@@ -179,9 +179,9 @@ const Contact = ({
                 </p>
               </div>
             ) : (
-              <form onSubmit={handleSubmit} className="mt-7 space-y-5">
-                <div className="grid gap-5 md:grid-cols-2">
-                  <div>
+              <form onSubmit={handleSubmit} className="mt-7 min-w-0 space-y-5">
+                <div className="grid min-w-0 gap-5 md:grid-cols-2">
+                  <div className="min-w-0">
                     <label
                       htmlFor="fullName"
                       className="mb-2 block text-sm font-semibold text-slate-700"
@@ -200,7 +200,7 @@ const Contact = ({
                     />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <label
                       htmlFor="phone"
                       className="mb-2 block text-sm font-semibold text-slate-700"
@@ -250,7 +250,7 @@ const Contact = ({
                     aria-labelledby="tour-label"
                     aria-expanded={isTourSelectOpen}
                     onClick={() => setIsTourSelectOpen((isOpen) => !isOpen)}
-                    className="flex w-full items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-left outline-none transition-all duration-300 focus:border-[#D8B35B] focus:ring-4 focus:ring-[#D8B35B]/15"
+                    className="flex w-full min-w-0 items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-3 py-2.5 text-left outline-none transition-all duration-300 focus:border-[#D8B35B] focus:ring-4 focus:ring-[#D8B35B]/15"
                   >
                     {selectedTour ? (
                       <span className="flex min-w-0 items-center gap-3">
@@ -263,7 +263,7 @@ const Contact = ({
                             sizes="64px"
                           />
                         </span>
-                        <span className="truncate text-sm font-semibold text-slate-950">
+                          <span className="min-w-0 truncate text-sm font-semibold text-slate-950">
                           {selectedTour.title}
                         </span>
                       </span>
@@ -298,7 +298,7 @@ const Contact = ({
                             })
                             setIsTourSelectOpen(false)
                           }}
-                          className={`flex w-full items-center gap-3 rounded-xl p-2 text-left transition-colors duration-200 ${
+                          className={`flex w-full min-w-0 items-center gap-3 rounded-xl p-2 text-left transition-colors duration-200 ${
                             formData.tour === tour.slug
                               ? 'bg-[#FEF6EE] text-slate-950'
                               : 'text-slate-700 hover:bg-slate-50'
@@ -313,7 +313,7 @@ const Contact = ({
                               sizes="64px"
                             />
                           </span>
-                          <span className="min-w-0 flex-1 text-sm font-semibold leading-5">
+                          <span className="min-w-0 flex-1 break-words text-sm font-semibold leading-5">
                             {tour.title}
                           </span>
                         </button>
