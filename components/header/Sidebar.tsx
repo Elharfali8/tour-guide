@@ -1,58 +1,39 @@
+'use client'
+
 // components/header/Sidebar.tsx
 import React, { useEffect } from 'react'
 import Link from 'next/link'
+import { usePathname, useRouter } from 'next/navigation'
+import { defaultLocale, localePath, locales, switchLocalePath, type Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
 
 interface SidebarProps {
   isOpen: boolean
   onClose: () => void
+  locale?: Locale
 }
 
-const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
-  const navLinks = [
-    { name: 'Home', href: '/#home' },
-    { name: 'Why Choose Us', href: '/#why-choose-us' },
-    { name: 'Activities', href: '/#activities' },
-    { name: 'About', href: '/#about' },
-    { name: 'Destinations', href: '/#destinations' },
-    { name: 'Contact', href: '/#contact' },
-  ]
+const Sidebar = ({ isOpen, onClose, locale = defaultLocale }: SidebarProps) => {
+  const pathname = usePathname()
+  const router = useRouter()
+  const dictionary = getDictionary(locale)
+  const navLinks = dictionary.nav.links
 
-  // Lock scroll when sidebar is open
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
     } else {
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
     }
 
     return () => {
       document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
     }
   }, [isOpen])
 
-  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    onClose()
+  const scrollToSection = (hash: string) => {
+    const element = document.querySelector(hash)
 
-    if (!href.startsWith('/#')) {
-      return
-    }
-
-    if (window.location.pathname !== '/') {
-      return
-    }
-
-    e.preventDefault()
-    
-    // Get the section ID from the href
-    const sectionId = href.replace('/', '')
-    const element = document.querySelector(sectionId)
-    
     if (element) {
       const headerOffset = 80
       const elementPosition = element.getBoundingClientRect().top
@@ -63,6 +44,32 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
         behavior: 'smooth'
       })
     }
+  }
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement>,
+    originalHref: string
+  ) => {
+    if (!originalHref.startsWith('/#')) {
+      onClose()
+      return
+    }
+
+    e.preventDefault()
+
+    const hash = originalHref.replace('/', '')
+    const localeHomePath = localePath(locale, '/')
+    const isLocaleHome = pathname === localeHomePath || pathname === `${localeHomePath}/`
+
+    onClose()
+
+    if (isLocaleHome) {
+      window.history.replaceState(null, '', `${localeHomePath}${hash}`)
+      window.setTimeout(() => scrollToSection(hash), 0)
+      return
+    }
+
+    router.push(`${localeHomePath}${hash}`)
   }
 
   return (
@@ -109,7 +116,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
           {/* Logo in Sidebar */}
           <div className="mt-4 mb-8">
             <Link
-              href="/"
+              href={localePath(locale, '/')}
               className="text-2xl font-bold text-gray-900"
               onClick={onClose}
             >
@@ -122,7 +129,7 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             {navLinks.map((link) => (
               <Link
                 key={link.name}
-                href={link.href}
+                href={localePath(locale, link.href)}
                 className="block text-lg font-medium text-gray-800 hover:text-[#E8872F] transition-colors duration-300 hover:translate-x-1 transform"
                 onClick={(e) => handleLinkClick(e, link.href)}
               >
@@ -131,9 +138,31 @@ const Sidebar = ({ isOpen, onClose }: SidebarProps) => {
             ))}
           </nav>
 
+          <div className="mt-8">
+            <p className="mb-3 text-xs font-semibold uppercase tracking-[0.14em] text-gray-500">
+              Language
+            </p>
+            <div className="flex w-fit items-center rounded-full border border-[#D4C9B0] bg-white/60 p-1 text-xs font-semibold text-gray-700">
+              {locales.map((item) => (
+                <Link
+                  key={item}
+                  href={switchLocalePath(pathname, item)}
+                  onClick={onClose}
+                  className={`rounded-full px-4 py-2 uppercase transition-all duration-300 ${
+                    locale === item
+                      ? 'bg-primary text-white! shadow-sm'
+                      : 'hover:bg-black/5'
+                  }`}
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Footer */}
           <div className="mt-auto pt-6 border-t border-[#D4C9B0]">
-            <p className="text-sm text-gray-600">© 2026 Brand</p>
+            <p className="text-sm text-gray-600">&copy; 2026 TFM Tours</p>
           </div>
         </div>
       </div>

@@ -16,6 +16,13 @@ export const tours = [
     href: '/tours/ourika-valley-day-trip',
   },
   {
+  href: "/tours/agafay-desert-day-trip",
+  title: "Agafay Desert Day Trip",
+  image: "/activities/quad.jpg",
+  description:
+    "Escape to the Agafay Desert for breathtaking landscapes, camel rides, quad adventures, and an authentic Moroccan experience.",
+  },
+  {
     title: 'Day Trip from Marrakech to the Imlil Valley',
     description:
       'Discover the breathtaking Imlil Valley with scenic mountain hikes, traditional Berber villages, and unforgettable views of the High Atlas Mountains.',
@@ -28,6 +35,13 @@ export const tours = [
       'Journey through the High Atlas Mountains to discover the UNESCO-listed Aït Ben Haddou, the cinematic city of Ouarzazate, and breathtaking Moroccan landscapes.',
     image: '/destinations/ouarzazat.jpg',
     href: '/tours/ouarzazate-ait-ben-haddou',
+  },
+  {
+    href: "/tours/marrakech-palmeraie-camel-ride",
+    title: "Marrakech Camel Ride Experience",
+    image: "/activities/camel-riding.jpg",
+    description:
+    "Enjoy a peaceful camel ride through Marrakech's Palm Grove, discover Berber villages, and experience authentic Moroccan hospitality.",
   },
 ]
 
@@ -177,7 +191,71 @@ export const tourBySlug = [
         "Explore the bustling souks before finishing your tour at the vibrant Jemaa El-Fna Square, where storytellers, musicians, artisans, and local culture come to life."
     }
   ]
+  },
+     {
+  slug: "agafay-desert-day-trip",
+  title: "Agafay Desert Day Trip",
+  image: "/activities/quad.jpg",
+  caption:
+    "Escape to the Agafay Desert for breathtaking landscapes, camel rides, quad adventures, and an authentic Moroccan experience.",
+
+  overview:
+    "Take a break from the bustle of Marrakech and discover the stunning Agafay Desert. Just a short drive from the city, this rocky desert offers spectacular scenery, peaceful surroundings, and unforgettable experiences. Enjoy optional camel rides, thrilling quad biking, authentic Berber hospitality, and panoramic views of the Atlas Mountains on a relaxing day filled with adventure and culture.",
+
+  highlights: [
+    "Discover the breathtaking landscapes of the Agafay Desert.",
+    "Enjoy an optional camel ride through the rocky desert.",
+    "Experience an exciting quad bike adventure across desert trails.",
+    "Share a traditional Moroccan meal with a local Berber family (optional).",
+    "Drive through authentic Berber villages with panoramic Atlas Mountain views.",
+    "Capture unforgettable photos in one of Morocco's most unique natural settings."
+  ],
+
+  included: [
+    "Hotel pick-up and drop-off",
+    "Professional driver and guide",
+    "Private air-conditioned transportation",
+    "Fuel"
+  ],
+
+  excluded: [
+    "Lunch and drinks (unless selected)",
+    "Optional activities (camel ride, quad biking, etc.)"
+  ],
+
+  itinerary: [
+    {
+      title: "09:00 - Hotel Pickup",
+      description:
+        "Meet your professional driver and depart Marrakech for the beautiful Agafay Desert."
     },
+    {
+      title: "Agafay Desert",
+      description:
+        "Discover the unique rocky landscapes of Agafay while enjoying spectacular panoramic views and peaceful surroundings."
+    },
+    {
+      title: "Optional Activities",
+      description:
+        "Choose between a relaxing camel ride or an exciting quad bike adventure to explore the desert from a different perspective."
+    },
+    {
+      title: "Traditional Berber Lunch",
+      description:
+        "Enjoy an optional homemade Moroccan lunch with a local Berber family while learning about their culture and traditions."
+    },
+    {
+      title: "Atlas Mountain Views",
+      description:
+        "Continue your journey through nearby Berber villages and admire breathtaking views of the Atlas Mountains."
+    },
+    {
+      title: "Return to Marrakech",
+      description:
+        "Relax on the drive back to Marrakech with unforgettable memories of your Agafay Desert adventure, arriving around 5:00 PM."
+    }
+  ]
+},
     {
   slug: "ourika-valley-day-trip",
   title: "Ourika Valley Day Trip",
@@ -322,6 +400,73 @@ export const tourBySlug = [
       title: "Return to Marrakech",
       description:
         "Relax on the scenic drive back to Marrakech after an unforgettable day exploring the High Atlas Mountains."
+    }
+  ]
+  },
+   {
+  slug: "marrakech-palmeraie-camel-ride",
+  title: "Marrakech Camel Ride Experience",
+  image: "/activities/camel-riding.jpg",
+  caption:
+    "Enjoy a peaceful camel ride through Marrakech's Palm Grove, discover Berber villages, and experience authentic Moroccan hospitality.",
+
+  overview:
+    "Escape the hustle and bustle of Marrakech with a relaxing camel ride through the beautiful Palm Grove. Ride across scenic palm-lined trails, discover traditional Berber villages, wear authentic Tuareg clothing, and enjoy Moroccan mint tea with a local family. A perfect experience for couples, families, and anyone looking to discover Morocco's authentic charm.",
+
+  highlights: [
+    "Enjoy a peaceful camel ride through the beautiful Marrakech Palm Grove.",
+    "Travel in a traditional camel caravan surrounded by palm trees and desert landscapes.",
+    "Visit authentic Berber villages and experience local culture.",
+    "Wear traditional Tuareg clothing for unforgettable photos.",
+    "Share Moroccan mint tea with a Berber family and learn about their traditions."
+  ],
+
+  included: [
+    "Hotel pick-up and drop-off",
+    "Professional driver and guide",
+    "Private air-conditioned transportation",
+    "Camel ride experience",
+    "Traditional Tuareg outfit",
+    "Moroccan mint tea",
+    "Fuel"
+  ],
+
+  excluded: [
+    "Entrance fees (if applicable)",
+    "Lunch",
+    "Drinks"
+  ],
+
+  itinerary: [
+    {
+      title: "Hotel Pickup",
+      description:
+        "Meet your professional driver and travel from your accommodation to the Marrakech Palm Grove."
+    },
+    {
+      title: "Arrival at the Palm Grove",
+      description:
+        "Meet your camel guide and receive traditional Tuareg clothing, including a cheche and gandoura, before beginning your adventure."
+    },
+    {
+      title: "Camel Ride",
+      description:
+        "Enjoy a relaxing camel ride through palm groves, rocky desert paths, and peaceful landscapes while taking memorable photos along the way."
+    },
+    {
+      title: "Berber Family Visit",
+      description:
+        "Stop at a traditional Berber home to enjoy freshly prepared Moroccan mint tea and discover local customs and hospitality."
+    },
+    {
+      title: "Return Ride",
+      description:
+        "Continue your camel ride through the Palm Grove before returning to your driver."
+    },
+    {
+      title: "Return to Marrakech",
+      description:
+        "Relax during your comfortable drive back to your accommodation after an authentic Moroccan experience."
     }
   ]
 }

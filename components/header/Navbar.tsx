@@ -1,32 +1,35 @@
+'use client'
+
 // components/header/Navbar.tsx
 import React from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import { usePathname } from 'next/navigation'
+import { defaultLocale, localePath, locales, switchLocalePath, type Locale } from '@/i18n/config'
+import { getDictionary } from '@/i18n/dictionaries'
 
 interface NavbarProps {
   scrolled: boolean
   onMenuClick: () => void
+  locale?: Locale
 }
 
-const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
-  const navLinks = [
-    { name: 'Home', href: '/' },
-    { name: 'Why Choose Us', href: '/#why-choose-us' },
-    { name: 'Activities', href: '/#activities' },
-    // { name: 'About', href: '/#about' },
-    { name: 'Destinations', href: '/#destinations' },
-    { name: 'Contact', href: '/#contact' },
-  ]
+const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) => {
+  const pathname = usePathname()
+  const dictionary = getDictionary(locale)
+  const navLinks = dictionary.nav.links
 
   return (
     <div className="flex items-center justify-between h-16 md:h-20">
       {/* Logo */}
       <div className="flex-shrink-0">
-        <Link href="/" className="flex items-center gap-2">
-          <span className={`text-2xl font-bold transition-colors duration-300 ${
-            scrolled ? "text-gray-900" : "text-white! drop-shadow-md"
-          }`}>
-            LOGO
-          </span>
+        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-20 h-20">
+            <Image
+              src='/images/logo-no-bg.png'
+              alt='TFM Tours'
+              fill
+              className=' object-cover'
+            />
         </Link>
       </div>
 
@@ -35,7 +38,7 @@ const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
         {navLinks.map((link) => (
           <Link
             key={link.name}
-            href={link.href}
+            href={localePath(locale, link.href)}
             className={`font-medium transition-colors duration-300 ${
               scrolled ? "text-gray-700 hover:text-gray-900" : "text-white! hover:text-gray-300!"
             }`}
@@ -43,6 +46,29 @@ const Navbar = ({ scrolled, onMenuClick }: NavbarProps) => {
             {link.name}
           </Link>
         ))}
+        <div
+          className={`flex items-center rounded-full border p-1 text-xs font-semibold transition-colors duration-300 ${
+            scrolled
+              ? 'border-slate-200 bg-white/70 text-slate-700'
+              : 'border-white/30 bg-black/20 text-white'
+          }`}
+        >
+          {locales.map((item) => (
+            <Link
+              key={item}
+              href={switchLocalePath(pathname, item)}
+              className={`rounded-full px-3 py-1.5 uppercase transition-all duration-300 ${
+                locale === item
+                  ? 'bg-primary text-white! shadow-sm'
+                  : scrolled
+                    ? 'hover:bg-slate-100 hover:text-slate-950'
+                    : 'hover:bg-white/15'
+              }`}
+            >
+              {item}
+            </Link>
+          ))}
+        </div>
       </nav>
 
       {/* Mobile Menu Button */}

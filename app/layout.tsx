@@ -3,6 +3,7 @@ import { Poppins, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/header/Header";
 import Footer from "@/components/ui/Footer";
+import WhatsAppButton from "@/components/ui/WhatsAppButton";
 
 const poppins = Poppins({
   variable: "--font-poppins",
@@ -34,12 +35,13 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="fr"
       className={`${poppins.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full bg-background text-foreground">
         <Header />
         {children}
+        <WhatsAppButton />
         <Footer />
       </body>
     </html>

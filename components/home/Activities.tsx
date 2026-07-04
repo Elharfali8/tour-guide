@@ -1,254 +1,217 @@
-// components/home/Activities.tsx
-'use client';
+'use client'
 
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import SectionTitle from '@/components/ui/SectionTitle'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { defaultLocale, type Locale } from '@/i18n/config'
+import { getDictionary, type Dictionary } from '@/i18n/dictionaries'
 
-const Activities = () => {
+type ActivitiesProps = {
+  dictionary?: Dictionary
+  locale?: Locale
+}
+
+const Activities = ({
+  dictionary = getDictionary(defaultLocale),
+}: ActivitiesProps) => {
+  const t = dictionary.activities
+  const activities = t.items
   const [currentIndex, setCurrentIndex] = useState(0)
+  const [cardsPerView, setCardsPerView] = useState(4)
+  const [gapPx, setGapPx] = useState(24)
   const [isDragging, setIsDragging] = useState(false)
   const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-  const [cardsPerView, setCardsPerView] = useState(4)
-  const carouselRef = useRef<HTMLDivElement>(null)
+  const [dragDelta, setDragDelta] = useState(0)
 
-  const activities = [
-    {
-      title: 'Hot Air Balloon',
-      description: 'Float above the Atlas Mountains at sunrise with breathtaking panoramic views.',
-      image: '/activities/hot-air-balloon.jpg',
-      duration: '1-2 Hours',
-    },
-    {
-      title: 'Quad Biking',
-      description: 'Adrenaline-pumping rides through the dunes and rocky terrain of the desert.',
-      image: '/activities/quad.jpg',
-      duration: '2-4 Hours',
-    },
-    {
-      title: 'Camel Trekking',
-      description: 'Experience the timeless tradition of crossing the Sahara on a gentle camel.',
-      image: '/activities/camel-riding.jpg',
-      duration: '1-3 Days',
-    },
-    {
-      title: 'Surfing',
-      description: 'Ride the Atlantic waves at Taghazout or Essaouira, perfect for all levels.',
-      image: '/activities/surf.jpg',
-      duration: '2-3 Hours',
-    },
-    {
-      title: 'Hiking',
-      description: 'Explore the High Atlas trails, Berber villages, and hidden valleys.',
-      image: '/activities/hiking.jpg',
-      duration: '2-6 Hours',
-    },
-    {
-      title: 'Buggy Tours',
-      description: 'Discover off-road adventures in the desert or through scenic mountain paths.',
-      image: '/activities/buggy.jpg',
-      duration: '2-4 Hours',
-    },
-    {
-      title: 'Sunset Dinner',
-      description: 'Enjoy a magical dinner under the stars in the heart of the desert.',
-      image: '/activities/sunset-dinner.jpg',
-      duration: '3-4 Hours',
-    },
-  ]
-
-  // Update cards per view based on screen size
   useEffect(() => {
-    const updateCardsPerView = () => {
+    const updateLayout = () => {
       const width = window.innerWidth
+
       if (width >= 1280) {
-        setCardsPerView(4) // Large screens (xl): 4 cards
+        setCardsPerView(4)
+        setGapPx(24)
       } else if (width >= 768) {
-        setCardsPerView(3) // Medium screens (md): 3 cards
+        setCardsPerView(3)
+        setGapPx(24)
       } else {
-        setCardsPerView(2) // Small screens (sm): 2 cards
+        setCardsPerView(2)
+        setGapPx(16)
       }
     }
 
-    updateCardsPerView()
-    window.addEventListener('resize', updateCardsPerView)
-    return () => window.removeEventListener('resize', updateCardsPerView)
+    updateLayout()
+    window.addEventListener('resize', updateLayout)
+    return () => window.removeEventListener('resize', updateLayout)
   }, [])
 
-  const totalSlides = activities.length
-  const maxIndex = Math.max(0, totalSlides - cardsPerView)
+  const maxIndex = Math.max(0, activities.length - cardsPerView)
 
-  // Auto-play
   useEffect(() => {
-    const interval = setInterval(() => {
+    setCurrentIndex((index) => Math.min(index, maxIndex))
+  }, [maxIndex])
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
       if (!isDragging && maxIndex > 0) {
-        setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1))
+        setCurrentIndex((index) => (index + 1) % (maxIndex + 1))
       }
-    }, 5000)
-    return () => clearInterval(interval)
+    }, 5200)
+
+    return () => window.clearInterval(interval)
   }, [isDragging, maxIndex])
 
   const nextSlide = () => {
-    setCurrentIndex((prev) => (prev + 1) % (maxIndex + 1))
+    setCurrentIndex((index) => (index + 1) % (maxIndex + 1))
   }
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => (prev - 1 + (maxIndex + 1)) % (maxIndex + 1))
+    setCurrentIndex((index) => (index - 1 + (maxIndex + 1)) % (maxIndex + 1))
   }
 
-  const goToSlide = (index: number) => {
-    setCurrentIndex(index)
-  }
-
-  // Drag to scroll
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const startDrag = (clientX: number) => {
     setIsDragging(true)
-    setStartX(e.pageX - (carouselRef.current?.offsetLeft || 0))
-    setScrollLeft(carouselRef.current?.scrollLeft || 0)
+    setStartX(clientX)
+    setDragDelta(0)
   }
 
-  const handleMouseMove = (e: React.MouseEvent) => {
+  const moveDrag = (clientX: number) => {
     if (!isDragging) return
-    e.preventDefault()
-    const x = e.pageX - (carouselRef.current?.offsetLeft || 0)
-    const walk = (x - startX) * 1.5
-    if (carouselRef.current) {
-      carouselRef.current.scrollLeft = scrollLeft - walk
+    setDragDelta(clientX - startX)
+  }
+
+  const endDrag = () => {
+    if (!isDragging) return
+
+    if (dragDelta < -60 && currentIndex < maxIndex) {
+      nextSlide()
     }
-  }
 
-  const handleMouseUp = () => {
+    if (dragDelta > 60 && currentIndex > 0) {
+      prevSlide()
+    }
+
     setIsDragging(false)
+    setDragDelta(0)
   }
 
-  // Calculate card width based on cards per view
   const getCardWidth = () => {
-    const gap = 24 // 6 * 4 = 24px gap
-    return `calc(${100 / cardsPerView}% - ${(cardsPerView - 1) * 6 / cardsPerView}px)`
+    const totalGap = gapPx * (cardsPerView - 1)
+    return `calc((100% - ${totalGap}px) / ${cardsPerView})`
   }
+
+  const translatePercent = currentIndex * (100 / cardsPerView)
+  const translateGap = (currentIndex * gapPx) / cardsPerView
 
   return (
-    <section id='activities' className="py-12 lg:py-18 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Title */}
-        <SectionTitle
-          badge="EXCITING ACTIVITIES"
-          title="Adventures Across Morocco"
-          subtitle="From the sky to the sea, experience the thrill of Morocco's diverse landscapes"
-          centered
-          className="mb-10 sm:mb-12 lg:mb-16"
-        />
+    <section id="activities" className="relative overflow-hidden bg-[#FEF6EE] py-12 lg:py-18">
+      <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-[#D8B35B]/60 to-transparent" />
 
-        {/* Carousel Container */}
-        <div className="relative">
-          {/* Navigation Buttons */}
+      <div className="relative mx-auto max-w-7xl px-4">
+        <div className="mx-auto max-w-3xl text-center">
+          <span className="inline-flex items-center rounded-full border border-[#D8B35B]/40 bg-[#FCFBF8] px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-sm">
+            {t.badge}
+          </span>
+          <h2 className="mt-3 font-serif text-2xl font-semibold leading-tight text-slate-950 md:text-3xl lg:text-4xl">
+            {t.title}
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
+            {t.description}
+          </p>
+        </div>
+
+        <div className="relative mt-10">
           {maxIndex > 0 && (
             <>
               <button
+                type="button"
                 onClick={prevSlide}
-                className="absolute left-0 top-1/2 -translate-y-1/2 z-20 -ml-4 lg:-ml-6 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center text-gray-800 hover:text-[#E8872F] border border-gray-200"
-                aria-label="Previous slide"
+                className="absolute left-0 top-1/2 z-20 -ml-3 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white text-slate-900 shadow-lg transition-all duration-300 hover:scale-110 hover:text-[#9D7A2F] hover:shadow-xl lg:-ml-6 lg:h-12 lg:w-12"
+                aria-label="Previous activity"
               >
-                <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                </svg>
+                <ChevronLeft className="h-5 w-5" />
               </button>
-
               <button
+                type="button"
                 onClick={nextSlide}
-                className="absolute right-0 top-1/2 -translate-y-1/2 z-20 -mr-4 lg:-mr-6 w-10 h-10 lg:w-12 lg:h-12 rounded-full bg-white shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-110 flex items-center justify-center text-gray-800 hover:text-[#E8872F] border border-gray-200"
-                aria-label="Next slide"
+                className="absolute right-0 top-1/2 z-20 -mr-3 flex h-11 w-11 -translate-y-1/2 items-center justify-center rounded-full border border-white/80 bg-white text-slate-900 shadow-lg transition-all duration-300 hover:scale-110 hover:text-[#9D7A2F] hover:shadow-xl lg:-mr-6 lg:h-12 lg:w-12"
+                aria-label="Next activity"
               >
-                <svg className="w-5 h-5 lg:w-6 lg:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
+                <ChevronRight className="h-5 w-5" />
               </button>
             </>
           )}
 
-          {/* Carousel Track */}
           <div
-            ref={carouselRef}
-            className="overflow-hidden"
-            onMouseDown={handleMouseDown}
-            onMouseMove={handleMouseMove}
-            onMouseUp={handleMouseUp}
-            onMouseLeave={handleMouseUp}
+            className="cursor-grab overflow-hidden active:cursor-grabbing"
+            onMouseDown={(event) => startDrag(event.clientX)}
+            onMouseMove={(event) => moveDrag(event.clientX)}
+            onMouseUp={endDrag}
+            onMouseLeave={endDrag}
+            onTouchStart={(event) => startDrag(event.touches[0].clientX)}
+            onTouchMove={(event) => moveDrag(event.touches[0].clientX)}
+            onTouchEnd={endDrag}
           >
             <div
-  className="flex gap-4 sm:gap-6 transition-transform duration-500 ease-in-out"
-  style={{
-    transform: `translateX(calc(-${currentIndex * 100 / cardsPerView}% - ${currentIndex * 24}px))`,
-  }}
->
-              {activities.map((activity, index) => (
+              className="flex transition-transform duration-500 ease-out"
+              style={{
+                gap: `${gapPx}px`,
+                transform: `translateX(calc(-${translatePercent}% - ${translateGap}px + ${dragDelta}px))`,
+              }}
+            >
+              {activities.map((activity) => (
                 <div
-                  key={index}
+                  key={activity.title}
                   className="flex-shrink-0"
-                  style={{ 
+                  style={{
                     flex: `0 0 ${getCardWidth()}`,
-                    maxWidth: getCardWidth()
+                    maxWidth: getCardWidth(),
                   }}
                 >
-                  <div className="group relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 h-[320px] sm:h-[380px] lg:h-[420px]">
-                    {/* Background Image */}
-                    <div className="absolute inset-0">
-                      <Image
-                        src={activity.image}
-                        alt={activity.title}
-                        fill
-                        className="object-cover transition-transform duration-700 group-hover:scale-110"
-                      />
-                      {/* Gradient Overlay */}
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent"></div>
-                    </div>
+                  <article className="group relative h-[280px] overflow-hidden rounded-[24px] bg-slate-950 shadow-[0_18px_50px_rgba(15,23,42,0.14)] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(15,23,42,0.2)] sm:h-[340px] lg:h-[420px]">
+                    <Image
+                      src={activity.image}
+                      alt={activity.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-110"
+                      sizes="(min-width: 1280px) 25vw, (min-width: 768px) 33vw, 50vw"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
-                    {/* Content */}
-                    <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-6 lg:p-8">
-
-                      {/* Duration Badge */}
-                      <span className="inline-block bg-[#E8872F]/20 backdrop-blur-sm text-[#E8872F] text-xs font-semibold px-3 py-1 rounded-full mb-2 sm:mb-3 self-start border border-[#E8872F]/20">
+                    <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5 lg:p-7">
+                      <span className="mb-2 w-fit rounded-full border border-[#D8B35B]/30 bg-white/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#D8B35B] backdrop-blur sm:text-xs">
                         {activity.duration}
                       </span>
-
-                      {/* Title */}
-                      <h3 className="text-base sm:text-xl lg:text-2xl font-bold text-white mb-1 sm:mb-2 group-hover:text-[#E8872F] transition-colors duration-300">
+                      <h3 className="font-serif text-lg font-semibold leading-tight text-white sm:text-xl lg:text-2xl">
                         {activity.title}
                       </h3>
-
-                      {/* Description */}
-                      <p className="text-xs sm:text-sm text-white/80 line-clamp-2">
+                      <p className="mt-2 line-clamp-2 text-xs leading-5 text-white/75 sm:text-sm sm:leading-6">
                         {activity.description}
                       </p>
                     </div>
-                  </div>
+                  </article>
                 </div>
               ))}
             </div>
           </div>
         </div>
 
-        {/* Dots Indicator */}
         {maxIndex > 0 && (
-          <div className="flex justify-center gap-2 mt-6 sm:mt-8">
+          <div className="mt-7 flex justify-center gap-2">
             {Array.from({ length: maxIndex + 1 }).map((_, index) => (
               <button
                 key={index}
-                onClick={() => goToSlide(index)}
+                type="button"
+                onClick={() => setCurrentIndex(index)}
                 className={`h-2 rounded-full transition-all duration-300 ${
                   currentIndex === index
-                    ? 'w-8 bg-[#E8872F]'
-                    : 'w-2 bg-gray-300 hover:bg-gray-400'
+                    ? 'w-8 bg-[#9D7A2F]'
+                    : 'w-2 bg-slate-200 hover:bg-[#D8B35B]/70'
                 }`}
-                aria-label={`Go to slide ${index + 1}`}
+                aria-label={`Go to activity slide ${index + 1}`}
               />
             ))}
           </div>
         )}
-
-        
       </div>
     </section>
   )

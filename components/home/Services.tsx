@@ -8,53 +8,30 @@ import {
   Mountain,
   PlaneLanding,
 } from 'lucide-react'
+import { defaultLocale, localePath, type Locale } from '@/i18n/config'
+import { getDictionary, type Dictionary } from '@/i18n/dictionaries'
 
-const services = [
-  {
-    title: 'Private Driver',
-    description:
-      'Enjoy a professional private driver for business trips, sightseeing, or daily transportation with complete flexibility.',
-    icon: Car,
-    tone: 'from-emerald-700 to-emerald-500',
-  },
-  {
-    title: 'Airport Transfers',
-    description:
-      'Reliable pickups and drop-offs from all major Moroccan airports with punctual service and comfortable vehicles.',
-    icon: PlaneLanding,
-    tone: 'from-[#C99A45] to-[#E8C37A]',
-  },
-  {
-    title: 'Day Trips',
-    description:
-      "Discover Morocco's most beautiful destinations including Ouzoud, Ourika Valley, Essaouira, Agafay, and more.",
-    icon: Mountain,
-    tone: 'from-[#A9693B] to-[#D99B61]',
-  },
-  {
-    title: 'Multi-Day Tours',
-    description:
-      'Explore the Sahara Desert, imperial cities, mountains, and coastal towns through customized multi-day adventures.',
-    icon: Map,
-    tone: 'from-slate-800 to-slate-600',
-  },
-  {
-    title: 'Custom Tours',
-    description:
-      'Build your own itinerary and travel at your own pace with a fully personalized private experience.',
-    icon: Compass,
-    tone: 'from-teal-700 to-emerald-500',
-  },
-  {
-    title: 'VIP Transport',
-    description:
-      'Luxury transportation for business travelers, weddings, special events, and premium experiences.',
-    icon: Crown,
-    tone: 'from-[#9D7A2F] to-[#D8B35B]',
-  },
+const serviceIcons = [Car, PlaneLanding, Mountain, Map, Compass, Crown]
+const serviceTones = [
+  'from-emerald-700 to-emerald-500',
+  'from-[#C99A45] to-[#E8C37A]',
+  'from-[#A9693B] to-[#D99B61]',
+  'from-slate-800 to-slate-600',
+  'from-teal-700 to-emerald-500',
+  'from-[#9D7A2F] to-[#D8B35B]',
 ]
 
-const Services = () => {
+type ServicesProps = {
+  dictionary?: Dictionary
+  locale?: Locale
+}
+
+const Services = ({
+  dictionary = getDictionary(defaultLocale),
+  locale = defaultLocale,
+}: ServicesProps) => {
+  const t = dictionary.services
+
   return (
     <section
       id="services"
@@ -65,22 +42,21 @@ const Services = () => {
 
       <div className="relative mx-auto max-w-7xl px-4 ">
         <div className="mx-auto max-w-3xl text-center">
-          <span className="inline-flex items-center rounded-full border border-[#D8B35B]/40 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-emerald-800 shadow-sm backdrop-blur">
-            Our Services
+          <span className="inline-flex items-center rounded-full border border-[#D8B35B]/40 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur">
+            {t.badge}
           </span>
           <h2 className="mt-3 font-serif text-2xl font-semibold leading-tight text-slate-950 md:text-3xl lg:text-4xl">
-            Travel Morocco Your Way
+            {t.title}
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base leading-8 text-slate-600 md:text-lg">
-            From airport transfers to unforgettable private tours, we provide
-            comfortable, safe, and personalized transportation experiences
-            across Morocco.
+            {t.description}
           </p>
         </div>
 
         <div className="mt-12 grid grid-cols-1 gap-6 sm:mt-16 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {services.map((service) => {
-            const Icon = service.icon
+          {t.items.map((service, index) => {
+            const Icon = serviceIcons[index] ?? Car
+            const tone = serviceTones[index] ?? serviceTones[0]
 
             return (
               <article
@@ -91,7 +67,7 @@ const Services = () => {
                 <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-[#D8B35B]/70 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
 
                 <div
-                  className={`relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${service.tone} text-white shadow-lg shadow-emerald-950/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
+                  className={`relative flex h-16 w-16 items-center justify-center rounded-full bg-gradient-to-br ${tone} text-white shadow-lg shadow-emerald-950/10 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-3`}
                 >
                   <Icon className="h-7 w-7" strokeWidth={1.8} />
                 </div>
@@ -106,10 +82,10 @@ const Services = () => {
                 </div>
 
                 <Link
-                  href="/#contact"
-                  className="relative mt-6 inline-flex items-center gap-2 text-sm font-semibold text-emerald-800 transition-colors duration-300 hover:text-[#9D7A2F]"
+                  href={localePath(locale, '/#contact')}
+                  className="relative mt-6 inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors duration-300 hover:text-[#9D7A2F]"
                 >
-                  Learn More
+                  {t.learnMore}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                 </Link>
               </article>

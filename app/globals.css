@@ -59,7 +59,7 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
-  background: #fcfbf8;
+  background: #FEF6EE;
   color: #0f172a;
   font-family: var(--font-poppins), sans-serif;
   text-rendering: optimizeLegibility;
@@ -86,4 +86,37 @@ canvas,
 svg {
   display: block;
   max-width: 100%;
+}
+
+@keyframes whatsapp-jump {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  12% {
+    transform: translateY(-10px);
+  }
+
+  24% {
+    transform: translateY(0);
+  }
+
+  36% {
+    transform: translateY(-6px);
+  }
+
+  48% {
+    transform: translateY(0);
+  }
+}
+
+.whatsapp-jump {
+  animation: whatsapp-jump 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsapp-jump {
+    animation: none;
+  }
 }

@@ -3,60 +3,53 @@ import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { ArrowLeft, CalendarDays, Check, MapPin, X } from 'lucide-react'
 import Contact from '@/components/home/Contact'
+import { isLocale, localePath, locales } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
 import { tourBySlug } from '@/utils/tours'
 
-type TourPageProps = {
+type TourDetailPageProps = {
   params: Promise<{
+    locale: string
     slug: string
   }>
 }
 
-const findTour = (slug: string) =>
-  tourBySlug.find((tour) => tour.slug === slug) ?? null
-
 export const generateStaticParams = () => {
-  return tourBySlug.map((tour) => ({
-    slug: tour.slug,
-  }))
+  return locales.flatMap((locale) =>
+    tourBySlug.map((tour) => ({
+      locale,
+      slug: tour.slug,
+    }))
+  )
 }
 
-export const generateMetadata = async ({ params }: TourPageProps) => {
-  const { slug } = await params
-  const tour = findTour(slug)
+const TourDetailPage = async ({ params }: TourDetailPageProps) => {
+  const { locale, slug } = await params
 
-  if (!tour) {
-    return {
-      title: 'Tour Not Found',
-    }
+  if (!isLocale(locale)) {
+    notFound()
   }
 
-  return {
-    title: `${tour.title} | Morocco Adventures`,
-    description: tour.caption,
-  }
-}
+  const dictionary = getDictionary(locale)
+  const localizedTour = dictionary.tours.find((tour) => tour.slug === slug)
+  const tour = tourBySlug.find((item) => item.slug === slug)
 
-const TourDetailPage = async ({ params }: TourPageProps) => {
-  const { slug } = await params
-  const tour = findTour(slug)
-  const dictionary = getDictionary('en')
-
-  if (!tour) {
+  if (!tour || !localizedTour) {
     notFound()
   }
 
   return (
-    <main className="min-h-screen pt-20">
+    <main className="min-h-screen bg-[#FEF6EE] pt-12">
       <section className="relative overflow-hidden py-12 lg:py-18">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(13,94,72,0.10),transparent_34%),radial-gradient(circle_at_bottom_right,rgba(201,154,69,0.14),transparent_32%)]" />
 
         <div className="relative mx-auto max-w-7xl px-4">
           <Link
-            href="/tours"
+            href={localePath(locale, '/tours')}
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary transition-colors duration-300 hover:text-[#9D7A2F]"
           >
             <ArrowLeft className="h-4 w-4" />
-            Back to Tours
+            {locale === 'fr' ? 'Retour aux circuits' : 'Back to Tours'}
           </Link>
 
           <div className="mt-8 grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-12">
@@ -64,7 +57,7 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
               <div className="relative min-h-[420px] overflow-hidden rounded-[28px] bg-slate-950 shadow-[0_28px_80px_rgba(15,23,42,0.18)] sm:min-h-[560px]">
                 <Image
                   src={tour.image}
-                  alt={tour.title}
+                  alt={localizedTour.title}
                   fill
                   priority
                   className="object-cover"
@@ -73,10 +66,10 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950/60 via-transparent to-black/10" />
                 <div className="absolute bottom-6 left-6 right-6 rounded-2xl border border-white/20 bg-white/15 p-5 text-white shadow-xl backdrop-blur-md">
                   <p className="text-xs font-semibold uppercase tracking-[0.18em] text-[#D8B35B]">
-                    Private Morocco Tour
+                    {locale === 'fr' ? 'Circuit prive au Maroc' : 'Private Morocco Tour'}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-white/85">
-                    {tour.caption}
+                    {localizedTour.description}
                   </p>
                 </div>
               </div>
@@ -84,27 +77,27 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
 
             <div>
               <span className="inline-flex items-center rounded-full border border-[#D8B35B]/40 bg-white/70 px-4 py-2 text-xs font-semibold uppercase tracking-[0.18em] text-primary shadow-sm backdrop-blur">
-                Tour Details
+                {locale === 'fr' ? 'Details du circuit' : 'Tour Details'}
               </span>
 
               <h1 className="mt-4 font-serif text-4xl font-semibold leading-tight text-slate-950 md:text-5xl">
-                {tour.title}
+                {localizedTour.title}
               </h1>
 
               <div className="mt-5 flex flex-wrap gap-3">
                 <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
                   <MapPin className="h-4 w-4 text-[#9D7A2F]" />
-                  Marrakech departure
+                  {locale === 'fr' ? 'Depart de Marrakech' : 'Marrakech departure'}
                 </span>
                 <span className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-medium text-slate-700 shadow-sm">
                   <CalendarDays className="h-4 w-4 text-[#9D7A2F]" />
-                  Private experience
+                  {locale === 'fr' ? 'Experience privee' : 'Private experience'}
                 </span>
               </div>
 
               <div className="mt-8 rounded-[24px] border border-white/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
                 <h2 className="font-serif text-2xl font-semibold text-slate-950">
-                  Overview
+                  {locale === 'fr' ? 'Apercu' : 'Overview'}
                 </h2>
                 <p className="mt-4 text-base leading-8 text-slate-600">
                   {tour.overview}
@@ -113,7 +106,7 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
 
               <div className="mt-6 rounded-[24px] border border-white/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
                 <h2 className="font-serif text-2xl font-semibold text-slate-950">
-                  Highlights
+                  {locale === 'fr' ? 'Points forts' : 'Highlights'}
                 </h2>
                 <ul className="mt-5 grid gap-3">
                   {tour.highlights.map((highlight) => (
@@ -130,7 +123,7 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
               <div className="mt-6 grid gap-6 md:grid-cols-2">
                 <div className="rounded-[24px] border border-white/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
                   <h2 className="font-serif text-2xl font-semibold text-slate-950">
-                    Included
+                    {locale === 'fr' ? 'Inclus' : 'Included'}
                   </h2>
                   <ul className="mt-5 space-y-3">
                     {tour.included.map((item) => (
@@ -144,7 +137,7 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
 
                 <div className="rounded-[24px] border border-white/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
                   <h2 className="font-serif text-2xl font-semibold text-slate-950">
-                    Not Included
+                    {locale === 'fr' ? 'Non inclus' : 'Not Included'}
                   </h2>
                   <ul className="mt-5 space-y-3">
                     {tour.excluded.map((item) => (
@@ -159,7 +152,7 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
 
               <div className="mt-6 rounded-[24px] border border-white/80 bg-white/80 p-6 shadow-[0_18px_50px_rgba(15,23,42,0.08)] backdrop-blur">
                 <h2 className="font-serif text-2xl font-semibold text-slate-950">
-                  Itinerary
+                  {locale === 'fr' ? 'Itineraire' : 'Itinerary'}
                 </h2>
                 <div className="mt-6 space-y-6">
                   {tour.itinerary.map((stop, index) => (
@@ -184,27 +177,15 @@ const TourDetailPage = async ({ params }: TourPageProps) => {
                   ))}
                 </div>
               </div>
-
-              <div className="mt-8 rounded-[24px] bg-emerald-900 p-6 text-white shadow-[0_22px_60px_rgba(6,78,59,0.22)]">
-                <h2 className="font-serif text-2xl font-semibold">
-                  Ready to book this tour?
-                </h2>
-                <p className="mt-2 text-sm leading-7 text-white/75">
-                  Send us your preferred date, group size, and pickup location.
-                  We will help you plan the experience with comfort and care.
-                </p>
-                <Link
-                  href="#contact"
-                  className="mt-5 inline-flex rounded-full bg-white px-6 py-3 text-sm font-semibold text-emerald-950 transition-all duration-300 hover:bg-[#D8B35B]"
-                >
-                  Contact Us
-                </Link>
-              </div>
             </div>
           </div>
         </div>
       </section>
-      <Contact dictionary={dictionary} locale="en" initialTourSlug={slug} />
+      <Contact
+        dictionary={dictionary}
+        locale={locale}
+        initialTourSlug={localizedTour.slug}
+      />
     </main>
   )
 }
