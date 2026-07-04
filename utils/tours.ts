@@ -9,23 +9,23 @@ export const tours = [
     href: '/tours/marrakech-city-tour',
   },
   {
-    title: 'Full Day Trip From Marrakech To The Ourika Valley',
+    title: 'Full Day Trip to the Ourika Valley From Marrakech',
     description:
-      'Escape to the breathtaking Ourika Valley and discover Berber villages, scenic waterfalls, lush mountain landscapes, and authentic Moroccan culture.',
+      'Set off for a full day of exploration in the magnificent Ourika Valley, located in the heart of the High Atlas Mountains.',
     image: '/destinations/ourika.jpg',
     href: '/tours/ourika-valley-day-trip',
   },
   {
   href: "/tours/agafay-desert-day-trip",
-  title: "Agafay Desert Day Trip",
+  title: "Agafay Desert Quad Adventure",
   image: "/activities/quad.jpg",
   description:
-    "Escape to the Agafay Desert for breathtaking landscapes, camel rides, quad adventures, and an authentic Moroccan experience.",
+    "Take a break from the bustle of Marrakech and discover the magnificent Agafay Desert.",
   },
   {
     title: 'Day Trip from Marrakech to the Imlil Valley',
     description:
-      'Discover the breathtaking Imlil Valley with scenic mountain hikes, traditional Berber villages, and unforgettable views of the High Atlas Mountains.',
+      'Set off for an adventure in the High Atlas Mountains and discover the Imlil Valley.',
     image: '/destinations/imlil.jpg',
     href: '/tours/imlil-valley-day-trip',
     },
@@ -130,276 +130,280 @@ export const tourBySlug = [
   title: "Marrakech Guided City Tour",
   image: "/destinations/marrakech.jpg",
   caption:
-    "Explore Marrakech's iconic monuments, vibrant souks, and rich cultural heritage on a memorable guided half-day tour.",
+    "Discover Marrakech differently on a guided half-day tour with your professional guide.",
 
   overview:
-    "Discover Marrakech in a new light on a half-day guided tour with your professional guide. Explore the city's most iconic landmarks, historical monuments, beautiful gardens, and vibrant souks while immersing yourself in the rich culture and history of Morocco's famous Red City.",
+    "Discover Marrakech differently on a guided half-day tour with your professional guide. At 9:00 AM, your driver picks you up from your accommodation to immerse you in the second largest imperial city of Morocco. This complete visit allows you to discover the must-see monuments, historical places, and most emblematic cultural sites of Marrakech: the Koutoubia Mosque, the Saadian Tombs, the Majorelle Garden, the Bahia Palace, and the famous souks of the medina.",
 
   highlights: [
-    "Visit the iconic Koutoubia Mosque, the symbol of Marrakech.",
-    "Experience the lively atmosphere of the UNESCO-listed Jemaa El-Fna Square.",
-    "Relax in the peaceful Menara Gardens with stunning Atlas Mountain views.",
-    "Discover the historic Saadian Tombs dating back to the 16th century.",
-    "Explore the famous Majorelle Garden and Berber Museum.",
-    "Visit the magnificent Bahia Palace, a masterpiece of Moroccan architecture.",
-    "Wander through the colorful souks filled with local crafts, spices, leather goods, and jewelry."
+    "Koutoubia Mosque: the symbol of Marrakech, built by the Almohads in the 12th century, known for its refined architecture and minaret that inspired the Giralda of Seville and the Hassan Tower in Rabat.",
+    "Jemaa El-Fna Square: the living heart of the city, listed as UNESCO Intangible Cultural Heritage, with snake charmers, storytellers, musicians, artisans, and a unique atmosphere to experience at least once.",
+    "Menara Gardens: a peaceful space with a splendid view of the Atlas Mountains, perfect for enjoying a quiet moment in the middle of the lively city.",
+    "Saadian Tombs: a 16th-century royal necropolis and one of Marrakech's historical treasures, discovered in 1917 and known for Italian marble columns and carved wooden ceilings.",
+    "Majorelle Garden: created by Jacques Majorelle and restored by Yves Saint Laurent, this botanical garden is an artistic haven with exotic plants, colorful basins, and the Berber Museum.",
+    "Bahia Palace: an architectural masterpiece blending Moroccan and Andalusian styles, built in the 19th century and reflecting the elegance and refinement of old Moroccan palaces.",
+    "Marrakech Souks: get lost in the colorful maze of the medina, including the tanners' souk, potters' souk, dyers' souk, leather souk, jewelry, spices, and local crafts."
   ],
 
   included: [
-    "Hotel pick-up and drop-off",
     "Professional driver",
     "Experienced local guide",
     "Private air-conditioned transportation",
-    "Fuel"
+    "Fuel included"
   ],
 
   excluded: [
-    "Entrance fees to monuments",
     "Lunch",
+    "Entrance fees to monuments",
     "Drinks"
   ],
 
   itinerary: [
     {
-      title: "09:00 - Hotel Pickup",
+      title: "9:00 AM - Pickup at your accommodation",
       description:
-        "Your professional driver will pick you up from your accommodation in Marrakech."
+        "Your driver picks you up from your accommodation."
     },
     {
-      title: "Koutoubia Mosque",
+      title: "Marrakech iconic monuments",
       description:
-        "Visit Marrakech's most famous landmark and admire its remarkable Almohad architecture."
+        "Discover the iconic monuments of Marrakech."
     },
     {
-      title: "Saadian Tombs",
+      title: "Historic gardens",
       description:
-        "Explore the beautifully preserved royal necropolis dating back to the 16th century."
+        "Walk through the historic gardens."
     },
     {
-      title: "Majorelle Garden",
+      title: "Souks",
       description:
-        "Discover one of Morocco's most beautiful botanical gardens, restored by Yves Saint Laurent."
+        "Enjoy a guided visit of the souks."
     },
     {
-      title: "Bahia Palace",
+      title: "Local culture and traditions",
       description:
-        "Walk through the elegant courtyards and rooms of this magnificent 19th-century palace."
+        "Immerse yourself in local culture and traditions."
     },
     {
-      title: "Souks & Jemaa El-Fna",
+      title: "Jemaa El-Fna Square",
       description:
-        "Explore the bustling souks before finishing your tour at the vibrant Jemaa El-Fna Square, where storytellers, musicians, artisans, and local culture come to life."
+        "End the visit at Jemaa El-Fna Square."
+    },
+    {
+      title: "A half-day of history, culture, and emotion",
+      description:
+        "Ideal for those who wish to understand the true soul of Marrakech."
     }
   ]
   },
      {
   slug: "agafay-desert-day-trip",
-  title: "Agafay Desert Day Trip",
+  title: "Agafay Desert Quad Adventure",
   image: "/activities/quad.jpg",
   caption:
-    "Escape to the Agafay Desert for breathtaking landscapes, camel rides, quad adventures, and an authentic Moroccan experience.",
+    "Take a break from the bustle of Marrakech and discover the magnificent Agafay Desert.",
 
   overview:
-    "Take a break from the bustle of Marrakech and discover the stunning Agafay Desert. Just a short drive from the city, this rocky desert offers spectacular scenery, peaceful surroundings, and unforgettable experiences. Enjoy optional camel rides, thrilling quad biking, authentic Berber hospitality, and panoramic views of the Atlas Mountains on a relaxing day filled with adventure and culture.",
+    "Take a break from the bustle of Marrakech and discover the magnificent Agafay Desert. This rocky desert, located at the gates of the city, offers surprising landscapes, a peaceful atmosphere, and unforgettable activities such as camel rides, quad biking, and a delicious traditional lunch. It is the ideal excursion for a relaxing and exotic day without long hours on the road to the Sahara.",
 
   highlights: [
-    "Discover the breathtaking landscapes of the Agafay Desert.",
-    "Enjoy an optional camel ride through the rocky desert.",
-    "Experience an exciting quad bike adventure across desert trails.",
-    "Share a traditional Moroccan meal with a local Berber family (optional).",
-    "Drive through authentic Berber villages with panoramic Atlas Mountain views.",
-    "Capture unforgettable photos in one of Morocco's most unique natural settings."
+    "Visit the Agafay Desert, former nomadic territory in the 18th century.",
+    "Enjoy a nature escape only a few kilometers from Marrakech.",
+    "Take a camel ride or experience a quad adventure (optional).",
+    "Share a traditional lunch with a local family and discover their way of life.",
+    "Cross authentic Berber villages with views of the majestic Atlas Mountains.",
+    "Experience a peaceful day combining adventure, culture, and magnificent panoramas."
   ],
 
   included: [
-    "Hotel pick-up and drop-off",
-    "Professional driver and guide",
+    "Pick-up and drop-off at your accommodation",
+    "Professional driver / guide",
     "Private air-conditioned transportation",
-    "Fuel"
+    "Fuel included"
   ],
 
   excluded: [
-    "Lunch and drinks (unless selected)",
-    "Optional activities (camel ride, quad biking, etc.)"
+    "Lunch and drinks (unless option selected)",
+    "Optional activities (quad, camel, etc.)"
   ],
 
   itinerary: [
     {
-      title: "09:00 - Hotel Pickup",
+      title: "Around 9:00 AM - Pickup in Marrakech",
       description:
-        "Meet your professional driver and depart Marrakech for the beautiful Agafay Desert."
+        "Your day begins around 9:00 AM with pick-up at your hotel or riad in Marrakech."
     },
     {
-      title: "Agafay Desert",
+      title: "Departure to the Agafay Desert",
       description:
-        "Discover the unique rocky landscapes of Agafay while enjoying spectacular panoramic views and peaceful surroundings."
+        "You gradually leave the city to reach the rocky landscapes of the Agafay Desert, often called the desert of Marrakech."
     },
     {
-      title: "Optional Activities",
+      title: "Camel ride or quad excursion",
       description:
-        "Choose between a relaxing camel ride or an exciting quad bike adventure to explore the desert from a different perspective."
+        "On site, you can take a peaceful camel ride or go on a quad excursion to explore the desert tracks and hills."
     },
     {
-      title: "Traditional Berber Lunch",
+      title: "Open desert setting",
       description:
-        "Enjoy an optional homemade Moroccan lunch with a local Berber family while learning about their culture and traditions."
+        "The setting is calm and open, with spectacular views, perfect for taking photos and recharging."
     },
     {
-      title: "Atlas Mountain Views",
+      title: "Traditional lunch with a local family",
       description:
-        "Continue your journey through nearby Berber villages and admire breathtaking views of the Atlas Mountains."
+        "After your activities, you will be welcomed by a local family to share a traditional lunch if you choose this option, and discover their hospitality, customs, and daily life."
+    },
+    {
+      title: "Atlas surroundings",
+      description:
+        "In the afternoon, your excursion continues toward the Atlas surroundings, where you can admire rolling landscapes and enjoy superb panoramas of the mountains."
     },
     {
       title: "Return to Marrakech",
       description:
-        "Relax on the drive back to Marrakech with unforgettable memories of your Agafay Desert adventure, arriving around 5:00 PM."
+        "At the end of the day, you return to Marrakech; arrival is generally around 5:00 PM."
     }
   ]
 },
     {
   slug: "ourika-valley-day-trip",
-  title: "Ourika Valley Day Trip",
+  title: "Full Day Trip to the Ourika Valley From Marrakech",
   image: "/destinations/ourika.jpg",
   caption:
-    "Escape to the breathtaking Ourika Valley and discover Berber villages, scenic waterfalls, lush mountain landscapes, and authentic Moroccan culture.",
+    "Set off for a full day of exploration in the magnificent Ourika Valley from Marrakech.",
 
   overview:
-    "Escape for a full-day adventure to the beautiful Ourika Valley, nestled in the heart of the High Atlas Mountains. Discover authentic Berber villages, breathtaking mountain scenery, lush valleys, and the famous Setti Fatma waterfalls. Enjoy a relaxing journey with a professional driver while experiencing the rich traditions and warm hospitality of the local Berber communities.",
+    "Set off for a full day of exploration in the magnificent Ourika Valley, located in the heart of the High Atlas Mountains. If you love nature, calm, and want to discover the authentic life of the Berbers, this private excursion is the ideal choice. Your professional and certified driver will accompany you throughout the journey, allowing you to experience it at your own pace: green landscapes, traditional villages, waterfalls, and a warm local atmosphere. A unique immersion close to the inhabitants that will give your day an unforgettable character.",
 
   highlights: [
     "Discover the breathtaking landscapes of the Ourika Valley.",
-    "Visit a traditional Berber family and experience their authentic way of life.",
+    "Visit a Berber family and immerse yourself in their traditional way of life.",
     "Enjoy a guided hike to the famous Setti Fatma waterfalls.",
-    "Relax with an optional riverside lunch at a traditional Moroccan restaurant.",
-    "Explore organic aromatic gardens and discover traditional medicinal plants.",
-    "Visit the local weekly market on Mondays or Fridays (depending on the day of your visit).",
-    "Spot Barbary monkeys along the scenic route."
+    "Have lunch in a local restaurant facing the river (optional)."
   ],
 
   included: [
     "Hotel pick-up and drop-off",
-    "Professional English or French-speaking driver",
+    "Professional driver (French-speaking or English-speaking)",
     "Private air-conditioned transportation",
-    "Fuel"
+    "Fuel included"
   ],
 
   excluded: [
-    "Lunch",
-    "Drinks",
-    "Local hiking guide (optional)"
+    "Lunch and drinks not included",
+    "Local hiking guide (paid option)"
   ],
 
   itinerary: [
     {
-      title: "09:00 - Hotel Pickup",
+      title: "Departure from Marrakech",
       description:
-        "Meet your professional driver and depart Marrakech toward the beautiful High Atlas Mountains."
+        "After your departure from Marrakech, you will cross the plains before reaching the first Berber villages nestled at the foot of the Atlas Mountains."
     },
     {
-      title: "Scenic Drive",
+      title: "Organic aromatic gardens",
       description:
-        "Travel through picturesque valleys, rivers, and traditional Berber villages while enjoying panoramic mountain views."
+        "Discover traditional medicinal plants."
     },
     {
-      title: "Organic Aromatic Garden",
+      title: "Berber house",
       description:
-        "Visit a local aromatic garden to discover traditional medicinal plants and natural products."
+        "Taste mint tea and learn more about Berber culture and daily life."
     },
     {
-      title: "Berber Family Visit",
+      title: "Weekly market",
       description:
-        "Enjoy traditional Moroccan mint tea while learning about Berber culture and daily life inside a local family home."
+        "If your visit is on a Monday or Friday, discover an authentic moment where locals have sold and bought their products for generations."
     },
     {
-      title: "Weekly Berber Market",
+      title: "Setti Fatma waterfalls",
       description:
-        "If visiting on a Monday or Friday, explore the authentic local market where mountain communities have traded for generations."
+        "Reach the waterfalls after a short hike accompanied by a local guide."
     },
     {
-      title: "Setti Fatma Waterfalls",
+      title: "Barbary monkeys",
       description:
-        "Take an optional guided hike to the famous waterfalls and enjoy spectacular views of the surrounding mountains."
+        "Often visible during the journey."
     },
     {
-      title: "Riverside Lunch",
+      title: "Riverside restaurant",
       description:
-        "Relax and enjoy free time for lunch at a traditional restaurant beside the river."
+        "Enjoy a relaxing moment in a restaurant by the river, a perfect setting to unwind before returning to Marrakech."
     },
     {
       title: "Return to Marrakech",
       description:
-        "Travel back to Marrakech after a memorable day in the Atlas Mountains, arriving around 5:00 PM."
+        "Return to Marrakech around 5:00 PM."
     }
   ]
     },
    {
   slug: "imlil-valley-day-trip",
-  title: "Imlil Valley & High Atlas Day Trip",
+  title: "Day Trip from Marrakech to the Imlil Valley",
   image: "/destinations/imlil.jpg",
   caption:
-    "Explore the stunning Imlil Valley, hike through Berber villages, and enjoy breathtaking views of the High Atlas Mountains and Mount Toubkal.",
+    "Set off for a magnificent adventure in the heart of the High Atlas Mountains and discover the Imlil Valley.",
 
   overview:
-    "Escape to the breathtaking High Atlas Mountains and discover the beautiful Imlil Valley, one of Morocco's most spectacular natural destinations. Explore authentic Berber villages, hike scenic mountain trails, experience local traditions, and admire panoramic views of Mount Toubkal, the highest peak in North Africa. A perfect day for nature lovers, hikers, and cultural explorers.",
+    "Set off for a magnificent adventure in the heart of the High Atlas Mountains and discover the Imlil Valley, a must-see place for lovers of nature and authentic landscapes. Your driver guide will take you through traditional Berber villages, where you can explore local life, breathe the pure mountain air, and admire the iconic panoramas of the Toubkal massif. Enjoy a guided hike, a visit to the Berber market depending on the day, a traditional lunch as an option, and unique moments in nature. An immersive experience rich in encounters and human discoveries.",
 
   highlights: [
-    "Explore traditional Berber villages nestled in the High Atlas Mountains.",
-    "Experience Berber culture with a professional mountain guide.",
-    "Visit the weekly Berber market on Tuesdays or Saturdays (depending on your travel day).",
-    "Walk through orchards, rivers, valleys, and breathtaking mountain landscapes.",
-    "Visit a women's argan oil cooperative and discover traditional production methods.",
-    "Enjoy a guided hike lasting approximately 1.5 to 2 hours with panoramic mountain views.",
-    "Optional lunch at a traditional mountain restaurant or the famous Kasbah Toubkal."
+    "Explore traditional Berber villages and the natural beauty of the Atlas Mountains.",
+    "Discover local culture and Berber traditions with a professional mountain guide.",
+    "Visit the weekly Berber market depending on the day: Tuesday or Saturday.",
+    "Cross orchards, rivers, and valleys while enjoying breathtaking scenery.",
+    "Visit a women's argan oil cooperative.",
+    "Enjoy a 1.5 to 2 hour hike with panoramic views.",
+    "Have lunch in a traditional restaurant facing the mountain or at Kasbah Toubkal (option)."
   ],
 
   included: [
     "Hotel pick-up and drop-off",
-    "Professional English or French-speaking driver",
+    "Professional driver (French-speaking or English-speaking)",
     "Private air-conditioned transportation",
     "Fuel"
   ],
 
   excluded: [
-    "Lunch",
-    "Drinks",
-    "Local hiking guide (optional)"
+    "Lunch and drinks",
+    "Local hiking guide (paid option)"
   ],
 
   itinerary: [
     {
-      title: "09:00 - Hotel Pickup",
+      title: "9:00 AM - Hotel pickup",
       description:
-        "Meet your professional driver and depart Marrakech toward the stunning High Atlas Mountains."
+        "Your day begins at 9:00 AM with pick-up at your hotel. You will take the road toward the magnificent green landscapes of the High Atlas."
     },
     {
-      title: "Tahanaout",
+      title: "First stop: Tahanaout",
       description:
-        "Visit the charming Berber village of Tahanaout, famous for its lively weekly market held every Tuesday."
+        "Discover a charming village known for its lively Berber market every Tuesday, an ideal opportunity to observe local life, fresh products, and traditional crafts."
     },
     {
-      title: "Asni",
+      title: "Second stop: Asni",
       description:
-        "Explore the bustling mountain village of Asni, known for its traditional Saturday market and optional camel or mule rides."
+        "Famous for its Saturday market, Asni is a lively crossroads where mountain inhabitants come to sell their products. Possibility of taking a mule or camel ride (optional)."
     },
     {
-      title: "Argan Oil Cooperative",
+      title: "Imlil",
       description:
-        "Visit a local women's cooperative and learn how Morocco's famous argan oil is traditionally produced."
+        "Continue toward Imlil, an iconic mountain village located at the foot of Mount Toubkal, the highest peak in North Africa."
     },
     {
-      title: "Imlil Valley Hike",
+      title: "Guided hike",
       description:
-        "Meet your local mountain guide and enjoy a scenic 1.5 to 2-hour hike through Berber villages, rivers, waterfalls, and spectacular mountain landscapes."
+        "Meet a local mountain guide who will take you on a guided hike around the village, waterfalls, and surrounding valleys."
     },
     {
-      title: "Traditional Lunch",
+      title: "Traditional lunch",
       description:
-        "Enjoy free time for an optional traditional Moroccan lunch with panoramic views of the Atlas Mountains or Kasbah Toubkal."
+        "After the hike, enjoy a traditional lunch in a local restaurant or at Kasbah Toubkal (optional), offering a spectacular view of the mountains."
     },
     {
       title: "Return to Marrakech",
       description:
-        "Relax on the scenic drive back to Marrakech after an unforgettable day exploring the High Atlas Mountains."
+        "At the end of the afternoon, return to Marrakech with unforgettable memories of your day."
     }
   ]
   },

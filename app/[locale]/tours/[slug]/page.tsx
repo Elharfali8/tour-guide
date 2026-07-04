@@ -38,6 +38,8 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
     notFound()
   }
 
+  const tourContent = 'overview' in localizedTour ? localizedTour : tour
+
   return (
     <main className="min-h-screen bg-[#FEF6EE] pt-12">
       <section className="relative overflow-hidden py-12 lg:py-18">
@@ -69,7 +71,7 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                     {locale === 'fr' ? 'Circuit prive au Maroc' : 'Private Morocco Tour'}
                   </p>
                   <p className="mt-2 text-sm leading-6 text-white/85">
-                    {localizedTour.description}
+                    {tourContent.caption}
                   </p>
                 </div>
               </div>
@@ -100,7 +102,7 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                   {locale === 'fr' ? 'Apercu' : 'Overview'}
                 </h2>
                 <p className="mt-4 text-base leading-8 text-slate-600">
-                  {tour.overview}
+                  {tourContent.overview}
                 </p>
               </div>
 
@@ -109,7 +111,7 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                   {locale === 'fr' ? 'Points forts' : 'Highlights'}
                 </h2>
                 <ul className="mt-5 grid gap-3">
-                  {tour.highlights.map((highlight) => (
+                  {tourContent.highlights.map((highlight) => (
                     <li key={highlight} className="flex gap-3 text-sm leading-7 text-slate-600">
                       <span className="mt-1 flex h-6 w-6 flex-none items-center justify-center rounded-full bg-emerald-800 text-white">
                         <Check className="h-3.5 w-3.5" />
@@ -126,7 +128,7 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                     {locale === 'fr' ? 'Inclus' : 'Included'}
                   </h2>
                   <ul className="mt-5 space-y-3">
-                    {tour.included.map((item) => (
+                    {tourContent.included.map((item) => (
                       <li key={item} className="flex gap-3 text-sm text-slate-600">
                         <Check className="h-5 w-5 flex-none text-emerald-700" />
                         {item}
@@ -140,7 +142,7 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                     {locale === 'fr' ? 'Non inclus' : 'Not Included'}
                   </h2>
                   <ul className="mt-5 space-y-3">
-                    {tour.excluded.map((item) => (
+                    {tourContent.excluded.map((item) => (
                       <li key={item} className="flex gap-3 text-sm text-slate-600">
                         <X className="h-5 w-5 flex-none text-[#9D7A2F]" />
                         {item}
@@ -155,13 +157,13 @@ const TourDetailPage = async ({ params }: TourDetailPageProps) => {
                   {locale === 'fr' ? 'Itineraire' : 'Itinerary'}
                 </h2>
                 <div className="mt-6 space-y-6">
-                  {tour.itinerary.map((stop, index) => (
+                  {tourContent.itinerary.map((stop, index) => (
                     <div key={stop.title} className="relative flex gap-4">
                       <div className="flex flex-col items-center">
                         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-900 text-sm font-semibold text-white">
                           {index + 1}
                         </span>
-                        {index < tour.itinerary.length - 1 && (
+                        {index < tourContent.itinerary.length - 1 && (
                           <span className="mt-3 h-full w-px bg-[#D8B35B]/40" />
                         )}
                       </div>

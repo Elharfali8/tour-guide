@@ -178,9 +178,6 @@ const Activities = ({
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
 
                     <div className="relative z-10 flex h-full flex-col justify-end p-4 sm:p-5 lg:p-7">
-                      <span className="mb-2 w-fit rounded-full border border-[#D8B35B]/30 bg-white/15 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-[#D8B35B] backdrop-blur sm:text-xs">
-                        {activity.duration}
-                      </span>
                       <h3 className="font-serif text-lg font-semibold leading-tight text-white sm:text-xl lg:text-2xl">
                         {activity.title}
                       </h3>

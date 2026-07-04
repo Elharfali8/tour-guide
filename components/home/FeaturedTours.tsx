@@ -1,6 +1,6 @@
 // components/pages/Dashboard/FeaturedTours.tsx
 import React from 'react';
-import { MapPin, Calendar, Users, Star, ArrowRight } from 'lucide-react';
+import { MapPin, Calendar, Star, ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 
@@ -9,7 +9,6 @@ type Tour = {
   title: string;
   location: string;
   price: number;
-  duration: string;
   rating: number;
   reviews: number;
   image: string;
@@ -28,7 +27,6 @@ const FeaturedTours = ({ tours }: FeaturedToursProps) => {
       title: 'Moroccan Desert Adventure',
       location: 'Merzouga, Morocco',
       price: 299,
-      duration: '3 Days',
       rating: 4.9,
       reviews: 128,
       image: '/images/tours/desert.jpg',
@@ -39,7 +37,6 @@ const FeaturedTours = ({ tours }: FeaturedToursProps) => {
       title: 'Atlas Mountains Trek',
       location: 'Atlas Mountains, Morocco',
       price: 199,
-      duration: '2 Days',
       rating: 4.8,
       reviews: 96,
       image: '/images/tours/atlas.jpg',
@@ -50,7 +47,6 @@ const FeaturedTours = ({ tours }: FeaturedToursProps) => {
       title: 'Marrakech City Tour',
       location: 'Marrakech, Morocco',
       price: 149,
-      duration: '1 Day',
       rating: 4.7,
       reviews: 215,
       image: '/images/tours/marrakech.jpg',
@@ -97,10 +93,6 @@ const FeaturedTours = ({ tours }: FeaturedToursProps) => {
               <div className="absolute top-2 right-2 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-medium flex items-center gap-1">
                 <Star className="h-3 w-3 fill-yellow-400 text-yellow-400" />
                 {tour.rating} ({tour.reviews})
-              </div>
-              {/* Duration Badge */}
-              <div className="absolute bottom-2 left-2 bg-black/70 backdrop-blur-sm text-white px-2 py-1 rounded-lg text-xs font-medium">
-                {tour.duration}
               </div>
             </div>
 
