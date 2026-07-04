@@ -24,7 +24,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Morocco Adventures",
+  title: "TFM Tours",
   description: "Private tours across Morocco",
 };
 

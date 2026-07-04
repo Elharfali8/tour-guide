@@ -3,7 +3,7 @@ import { defaultLocale, type Locale } from './config'
 export const dictionaries = {
   en: {
     metadata: {
-      title: 'Morocco Adventures',
+      title: 'TFM Tours',
       description: 'Private tours and professional driver services across Morocco',
     },
     nav: {
@@ -311,7 +311,7 @@ export const dictionaries = {
   },
   fr: {
     metadata: {
-      title: 'Aventures au Maroc',
+      title: 'TFM Tours',
       description: 'Circuits prives et chauffeur professionnel partout au Maroc',
     },
     nav: {
