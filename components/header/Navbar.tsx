@@ -23,7 +23,7 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
     <div className="flex items-center justify-between h-16 md:h-20">
       {/* Logo */}
       <div className="flex-shrink-0">
-        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-16 lg:w-[70px] h-16 lg:h-[70px]">
+        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-[70px] h-[70px]">
             <Image
               src='/images/logo-no-bg.png'
               alt='TFM Tours'
@@ -39,9 +39,8 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
           <Link
             key={link.name}
             href={localePath(locale, link.href)}
-            className={`font-medium transition-colors duration-300 ${
-              scrolled ? "text-gray-700 hover:text-gray-900" : "text-white! hover:text-gray-300!"
-            }`}
+            className={`font-medium transition-colors duration-300 
+              text-gray-700 hover:text-gray-900`}
           >
             {link.name}
           </Link>
@@ -78,9 +77,8 @@ const Navbar = ({ scrolled, onMenuClick, locale = defaultLocale }: NavbarProps) 
         aria-label="Open menu"
       >
         <svg
-          className={`h-6 w-6 transition-colors duration-300 ${
-            scrolled ? "text-gray-900" : "text-white"
-          }`}
+          className={`h-6 w-6 transition-colors duration-300 
+            text-gray-900`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"

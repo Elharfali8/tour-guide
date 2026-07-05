@@ -6,6 +6,7 @@ import Link from 'next/link'
 import { usePathname, useRouter } from 'next/navigation'
 import { defaultLocale, localePath, locales, switchLocalePath, type Locale } from '@/i18n/config'
 import { getDictionary } from '@/i18n/dictionaries'
+import Image from 'next/image'
 
 interface SidebarProps {
   isOpen: boolean
@@ -92,10 +93,25 @@ const Sidebar = ({ isOpen, onClose, locale = defaultLocale }: SidebarProps) => {
         style={{ backgroundColor: '#EDE8D0' }}
       >
         <div className="flex flex-col h-full p-6">
-          {/* Close Button */}
-          <button
+          <div className='flex items-center justify-between'>
+            
+
+          {/* Logo in Sidebar */}
+          <div className="">
+        <Link href={localePath(locale, '/')} className="flex items-center gap-2 relative w-[70px] h-[70px]">
+            <Image
+              src='/images/logo-no-bg.png'
+              alt='TFM Tours'
+              fill
+              className=' object-cover'
+            />
+        </Link>
+            </div>
+            {/* Close Button */}
+            <div className='grid place-items-center'>
+              <button
             onClick={onClose}
-            className="self-end p-2 rounded-full hover:bg-black/10 transition"
+            className="self-end p-2 rounded-full hover:bg-black/10 transition cursor-pointer"
             aria-label="Close menu"
           >
             <svg
@@ -112,17 +128,10 @@ const Sidebar = ({ isOpen, onClose, locale = defaultLocale }: SidebarProps) => {
               />
             </svg>
           </button>
-
-          {/* Logo in Sidebar */}
-          <div className="mt-4 mb-8">
-            <Link
-              href={localePath(locale, '/')}
-              className="text-2xl font-bold text-gray-900"
-              onClick={onClose}
-            >
-              LOGO
-            </Link>
           </div>
+          </div>
+          
+          <div className='h-px w-full bg-[#D4C9B0] my-6' />
 
           {/* Navigation Links */}
           <nav className="space-y-4">
